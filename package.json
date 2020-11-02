@@ -1,11 +1,10 @@
 {
-  "name": "react-typescript",
+  "name": "dadi-risiko",
   "version": "1.0.0",
-  "description": "React and TypeScript example starter project",
+  "description": "Simulatore Dadi Risiko",
   "keywords": [
-    "typescript",
-    "react",
-    "starter"
+    "dadi",
+    "risiko"
   ],
   "main": "src/index.tsx",
   "dependencies": {
