@@ -11,7 +11,18 @@
     -->
 	<link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 	<link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎲</text></svg>">
-
+  <script>
+    if('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('sw.js')
+                .catch((err) => {
+                    console.error(`Error registring ${err}`) 
+                })
+        })
+    } else {
+        console.log(`Service worker is not supported in this browser.`)
+    }
+</script>
 	<title>Dadi Risiko</title>
 </head>
 

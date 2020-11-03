@@ -1,0 +1,25 @@
+{
+  "short_name": "Dadi Risiko",
+  "name": "Dadi Risiko",
+  "icons": [
+      {
+          "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><text y=%22.9em%22 font-size=%2258%22>🎲</text></svg>",
+          "sizes": "64x64",
+          "type": "image/svg"
+      },
+      {
+        "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 192 192%22><text y=%22.9em%22 font-size=%22180%22>🎲</text></svg>",
+        "type": "image/svg",
+          "sizes": "192x192"
+      },
+      {
+        "src": "data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22><text y=%22.9em%22 font-size=%22460%22>🎲</text></svg>",
+        "type": "image/svg",
+          "sizes": "512x512"
+      }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
