@@ -6,6 +6,7 @@ const GLOBAL_STYLE = css`
   body {
     margin: 0;
     padding: 0;
+    overflow: hidden;
   }
 `;
 const DICE_SIZE = 50;
