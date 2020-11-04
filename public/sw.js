@@ -1,11 +1,5 @@
-self.addEventListener('install', () => {
-  console.log('install')
-})
+self.addEventListener('install', () => {})
 
-self.addEventListener('activate', () => {
-  console.log('activate')
-})
+self.addEventListener('activate', () => {})
 
-self.addEventListener('fetch', event => {
-  console.log('fetch')
-})
+self.addEventListener('fetch', event => {})
