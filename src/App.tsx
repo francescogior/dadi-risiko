@@ -99,6 +99,21 @@ const RollButton = styled.div({
   }
 });
 
+
+const X = ({ size }: { size: number, }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    stroke='#d9d1d6'
+    viewBox={`0 0 ${size} ${size}`}
+    style={{ position: 'absolute' }}
+  >
+    <line x1={0} y1={0} x2={size} y2={size} strokeWidth={size / 10}></line>
+    <line x1={size} y1={0} x2={0} y2={size} strokeWidth={size / 10}></line>
+  </svg>
+)
+
 type RisikoDiceType = "defense" | "attack";
 type RisikoDiceProps = {
   type: RisikoDiceType;
@@ -128,8 +143,9 @@ function RisikoDice({
       color={risikoDiceTypeToColor[type]}
       isDisabled={isDisabled}
       isTappable={isToggable}
-      isBordered={isWinning}
+      isBordered={isWinning && !isDisabled}
     >
+      {isDisabled && <X size={DICE_SIZE} />}
       <DiceValueDisplay>{value || "-"}</DiceValueDisplay>
     </DiceShape>
   );
