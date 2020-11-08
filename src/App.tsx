@@ -9,6 +9,7 @@ const GLOBAL_STYLE = css`
     overflow: hidden;
   }
 `;
+const BACKGROUND_COLOR = '#dee8d5'
 const DICE_SIZE = 50;
 const DICE_MARGIN = 10;
 
@@ -62,7 +63,7 @@ const DiceValueDisplay = styled.div({
 });
 
 const Board = styled.div({
-  background: "#dee8d5",
+  background: BACKGROUND_COLOR,
   height: "100vh",
   display: "flex",
   flexDirection: "column",
@@ -105,7 +106,7 @@ const X = ({ size }: { size: number, }) => (
     xmlns="http://www.w3.org/2000/svg"
     width={size}
     height={size}
-    stroke='#d9d1d6'
+    stroke={BACKGROUND_COLOR}
     viewBox={`0 0 ${size} ${size}`}
     style={{ position: 'absolute' }}
   >
