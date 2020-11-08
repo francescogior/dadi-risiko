@@ -9,7 +9,7 @@ const GLOBAL_STYLE = css`
     overflow: hidden;
   }
 `;
-const BACKGROUND_COLOR = '#dee8d5'
+const BACKGROUND_COLOR = '#0e1815'
 const DICE_SIZE = 50;
 const DICE_MARGIN = 10;
 
@@ -49,7 +49,8 @@ const DiceShape = styled.div(
       transform: "scale(.98)"
     },
     boxSizing: "border-box",
-    border: isBordered ? "6px solid black" : "unset"
+    border: isBordered ? "6px solid black" : "unset",
+    boxShadow: isBordered ? '0 0 21px rgba(255,255,255,.2);' : 'unset'
   })
 );
 
@@ -84,7 +85,7 @@ const RollButton = styled.div({
   cursor: "pointer",
   fontFamily: "sans-serif",
   color: "#32281f",
-  background: "#d5c7bc",
+  background: "#699969",
   textTransform: "uppercase",
   fontWeight: 900,
   borderRadius: 4,
