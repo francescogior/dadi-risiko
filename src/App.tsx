@@ -181,39 +181,14 @@ export default function App() {
   );
 
   const toggleActive = React.useCallback(
-    (sideType: RisikoDiceType, diceIndex: number) => () => {
-      switch (sideType) {
-        case "attack":
-          switch (numberOfAttackers) {
-            case 1:
-              if (diceIndex === 1) setNumberOfAttackers(2);
-              break;
-            case 2:
-              if (diceIndex === 1) setNumberOfAttackers(1);
-              if (diceIndex === 2) setNumberOfAttackers(3);
-              break;
-            case 3: {
-              if (diceIndex === 2) setNumberOfAttackers(2);
-            }
-          }
-          break;
-        case "defense": {
-          switch (numberOfDefenders) {
-            case 1:
-              if (diceIndex === 1) setNumberOfDefenders(2);
-              break;
-            case 2:
-              if (diceIndex === 1) setNumberOfDefenders(1);
-              if (diceIndex === 2) setNumberOfDefenders(3);
-              break;
-            case 3: {
-              if (diceIndex === 2) setNumberOfDefenders(2);
-            }
-          }
-        }
+    (currentNumber: number, setNumber: (m: NumberOfDices) => void, diceIndex: number) => () => {
+      if (currentNumber === 2) {
+        if (diceIndex === 1) setNumber(1)
+        if (diceIndex === 2) setNumber(3)
       }
+      else setNumber(2)
     },
-    [numberOfAttackers, numberOfDefenders]
+    []
   );
 
   return (
@@ -227,13 +202,8 @@ export default function App() {
             value={value}
             key={diceIndex}
             isWinning={value > [d1, d2, d3][diceIndex]}
-            onClick={toggleActive("attack", diceIndex)}
-            isToggable={
-              (numberOfAttackers === 1 && diceIndex === 1) ||
-              (numberOfAttackers === 2 &&
-                (diceIndex === 1 || diceIndex === 2)) ||
-              (numberOfAttackers === 3 && diceIndex === 2)
-            }
+            onClick={toggleActive(numberOfAttackers, setNumberOfAttackers, diceIndex)}
+            isToggable={diceIndex > 0}
           />
         ))}
       </Side>
@@ -246,13 +216,8 @@ export default function App() {
             isWinning={value >= [a1, a2, a3][diceIndex]}
             isDisabled={diceIndex + 1 > numberOfDefenders}
             key={diceIndex}
-            onClick={toggleActive("defense", diceIndex)}
-            isToggable={
-              (numberOfDefenders === 1 && diceIndex === 1) ||
-              (numberOfDefenders === 2 &&
-                (diceIndex === 1 || diceIndex === 2)) ||
-              (numberOfDefenders === 3 && diceIndex === 2)
-            }
+            onClick={toggleActive(numberOfDefenders, setNumberOfDefenders, diceIndex)}
+            isToggable={diceIndex > 0}
           />
         ))}
       </Side>
