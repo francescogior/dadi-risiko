@@ -4,6 +4,7 @@
   "icons": [
       {
         "src": "icon.png",
+        "purpose": "maskable",
         "type": "image/png",
           "sizes": "512x512"
       }
