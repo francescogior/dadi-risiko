@@ -10,7 +10,7 @@ const GLOBAL_STYLE = css`
   }
 `;
 const BACKGROUND_COLOR = '#0e1815'
-const DICE_SIZE = 50;
+const DICE_SIZE = 80;
 const DICE_MARGIN = 10;
 
 type DiceValue = 1 | 2 | 3 | 4 | 5 | 6;
@@ -23,34 +23,35 @@ type DiceProps = {
   isDisabled: boolean;
   isTappable: boolean;
   isBordered: boolean;
+  hasReducedOpacity: boolean;
 };
 
 const DiceShape = styled.div(
-  ({ color, isDisabled, isTappable, isBordered }: DiceProps) => ({
+  ({ color, isDisabled, isTappable, isBordered, hasReducedOpacity }: DiceProps) => ({
     width: DICE_SIZE,
     height: DICE_SIZE,
     background: color,
-    borderRadius: 4,
+    borderRadius: DICE_SIZE / 10,
     display: "flex",
     alignItems: "center",
     color: "white",
     margin: DICE_MARGIN,
     outline: "none",
     cursor: isTappable ? "pointer" : "default",
-    opacity: isDisabled ? 0.5 : 1,
+    opacity: isDisabled || hasReducedOpacity ? 0.2 : 1,
     pointerEvents: isTappable ? undefined : "none",
     userSelect: "none",
     transition: "transform .3s",
     "@media(hover: hover)": {
-      ":hover": { opacity: isTappable ? 0.6 : 0.9 }
+      ":hover": { opacity: isDisabled || hasReducedOpacity ? isTappable ? 0.3 : 0.9 : isTappable ? 0.6 : 0.9 }
     },
     ":active": {
-      opacity: isTappable ? 0.7 : 0.8,
+      opacity: isDisabled || hasReducedOpacity ? isTappable ? 0.4 : 0.8 : isTappable ? 0.7 : 0.8,
       transform: "scale(.98)"
     },
     boxSizing: "border-box",
-    border: isBordered ? "6px solid black" : "unset",
-    boxShadow: isBordered ? '0 0 21px rgba(255,255,255,.2);' : 'unset'
+    // border: isBordered ? `${DICE_SIZE/10}px solid black` : "unset",
+    boxShadow: isBordered ? `0 0 ${DICE_SIZE / 1.5}px rgba(255,255,255,.5);` : 'unset',
   })
 );
 
@@ -88,9 +89,9 @@ const RollButton = styled.div({
   background: "#699969",
   textTransform: "uppercase",
   fontWeight: 900,
-  borderRadius: 4,
+  borderRadius: DICE_SIZE / 10,
   userSelect: "none",
-  fontSize: 36,
+  fontSize: DICE_SIZE * 0.7,
   transition: "transform .3s",
   "@media(hover: hover)": {
     ":hover": { opacity: 0.9 }
@@ -146,6 +147,7 @@ function RisikoDice({
       isDisabled={isDisabled}
       isTappable={isToggable}
       isBordered={isWinning && !isDisabled}
+      hasReducedOpacity={!isWinning && !isDisabled}
     >
       {isDisabled && <X size={DICE_SIZE} />}
       <DiceValueDisplay>{value || "-"}</DiceValueDisplay>
