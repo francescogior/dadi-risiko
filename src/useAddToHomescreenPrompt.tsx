@@ -55,7 +55,7 @@ export function useAddToHomescreenPrompt(): [
     return () => {
       window.removeEventListener("appinstalled", onInstall as any);
     };
-  });
+  }, []);
 
   return [promptable, promptToInstall, isInstalled];
 }
